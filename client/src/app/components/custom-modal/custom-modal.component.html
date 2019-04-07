@@ -1,0 +1,26 @@
+<ngx-smart-modal #customModal identifier="customModal">
+  <div *ngIf="customModal.hasData()">
+    <div [ngClass]="[ customModal.getData().classTitle ]">
+      <h5>
+        <div *ngIf="customModal.getData().hasIcon">
+          <i [ngClass]="[ customModal.getData().classIcon ]"></i>{{ customModal.getData().title }}
+        </div>
+        <div *ngIf="!customModal.getData().hasIcon">
+          {{ customModal.getData().title }}
+        </div>
+      </h5>
+    </div>
+    <div [ngClass]="[ customModal.getData().classText ]">
+      <p>{{ customModal.getData().text }}</p>
+    </div>
+    <div class="float-right">
+      <div *ngIf="customModal.getData().hasBtnAccept">
+        <button [ngClass]="[ customModal.getData().classBtnAccept ]" (click)="this[customModal.getData().action]()">Accept</button>
+        <button [ngClass]="[ customModal.getData().classBtnClose ]" (click)="customModal.close()">Close</button>
+      </div>
+      <div *ngIf="!customModal.getData().hasBtnAccept">
+        <button [ngClass]="[ customModal.getData().classBtnClose ]" (click)="customModal.close()">Close</button>
+      </div>
+    </div>
+  </div>
+</ngx-smart-modal>

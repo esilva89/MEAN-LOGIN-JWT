@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-4 mx-auto">
+    <div class="card">
+      <div class="card-header bg-dark">
+        <h3 class="card-title text-white">
+          <i class="fas fa-sign-in-alt"></i> Account Login
+        </h3>
+      </div>
+      <div class="card-body">
+        <form #log="ngForm" (ngSubmit)="onSignIn(log)">
+          <div class="form-group">
+            <input  type="email" class="form-control" name="email" placeholder="Email"
+                    required
+                    #email="ngModel" [(ngModel)]="user.email" [ngClass]="{ 'is-invalid': log.submitted && email.invalid }">
+            <div *ngIf="log.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input  type="password" class="form-control" name="password" placeholder="Password"
+                    required
+                    #password="ngModel" [(ngModel)]="user.password" [ngClass]="{ 'is-invalid': log.submitted && password.invalid }">
+            <div *ngIf="log.submitted && password.invalid" class="invalid-feedback">
+              <div *ngIf="password.errors.required">Password is required</div>
+            </div>
+          </div>
+          <button class="btn btn-success btn-block">
+            Sign In
+          </button>
+        </form>
+      </div>
+      <div class="form-group">
+        <a routerLink="/user/register" class="form-control text-center login-user">Do you haven't account? Sign up</a>
+      </div>
+    </div>
+  </div>
+</div>

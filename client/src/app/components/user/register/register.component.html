@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-md-5 mx-auto">
+    <div class="card">
+      <div class="card-header bg-dark">
+        <h3 class="card-title text-white">
+          <i class="fas fa-user-plus"></i> Account Register
+        </h3>
+      </div>
+      <div class="card-body">
+        <form #reg="ngForm" (ngSubmit)="onSignUp(reg)" [appMatchPassword]="[ 'password', 'confirmPassword' ]">
+          <div class="form-group">
+            <input  type="text" class="form-control" name="username" placeholder="Username"
+                    required minlength="5"
+                    #username="ngModel" [(ngModel)]="user.username"
+                    [ngClass]="{ 'is-invalid': reg.submitted && username.invalid || customFormError.username.show }"
+                    (keydown)="onClearError($event)">
+            <div *ngIf="reg.submitted && username.invalid" class="invalid-feedback">
+              <div *ngIf="username.errors.required">Username is required</div>
+              <div *ngIf="username.errors.minlength">Username must be at least 5 characters</div>
+            </div>
+            <div *ngIf="customFormError.username.show" class="invalid-feedback">{{ customFormError.username.message }}</div>
+          </div>
+          <div class="form-group">
+            <input  type="email" class="form-control" name="email" placeholder="Email"
+                    required email
+                    #email="ngModel" [(ngModel)]="user.email"
+                    [ngClass]="{ 'is-invalid': reg.submitted && email.invalid || customFormError.email.show }"
+                    (keydown)="onClearError($event)">
+            <div *ngIf="reg.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
+            <div *ngIf="customFormError.email.show" class="invalid-feedback">{{ customFormError.email.message }}</div>
+          </div>
+          <div class="form-group">
+            <input  type="password" class="form-control" name="password" placeholder="Password"
+                    required minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$"
+                    #password="ngModel" [(ngModel)]="user.password"
+                    [ngClass]="{ 'is-invalid': reg.submitted && password.invalid || customFormError.password.show }"
+                    (keydown)="onClearError($event)">
+            <div *ngIf="reg.submitted && password.invalid" class="invalid-feedback">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">Password must be at least 8 characters</div>
+              <div *ngIf="password.errors.pattern">Password must contain at least a uppercase, a lowercase, a number and a special character</div>
+            </div>
+            <div *ngIf="customFormError.password.show" class="invalid-feedback">{{ customFormError.password.message }}</div>
+          </div>
+          <div class="form-group">
+            <input  type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password"
+                    required
+                    #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword"
+                    [ngClass]="{ 'is-invalid': reg.submitted && confirmPassword.invalid }">
+            <div *ngIf="reg.submitted && confirmPassword.invalid" class="invalid-feedback">
+              <div *ngIf="confirmPassword.errors.required">Confirm Password is required</div>
+              <div *ngIf="confirmPassword.errors.matchPassword">Passwords must match</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="d-flex justify-content-center">
+              <re-captcha siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU" name="captcha" required
+                          #captcha="ngModel" [(ngModel)]="user.captcha">
+              </re-captcha>
+            </div>
+            <div *ngIf="reg.submitted && captcha.invalid" class="invalid-feedback d-block">
+              <div class="text-center" *ngIf="captcha.errors.required">Please verify you isn't a robot</div>
+            </div>
+          </div>
+          <button class="btn btn-success btn-block">
+            Sign Up
+          </button>
+        </form>
+      </div>
+      <div class="form-group">
+        <a routerLink="/user/login" class="form-control text-center register-user">Do you have account? Sign in</a>
+      </div>
+    </div>
+  </div>
+</div>

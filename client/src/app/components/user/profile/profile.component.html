@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-4 mx-auto">
+    <div class="card">
+      <div class="card-header bg-dark">
+        <h3 class="card-title text-white">
+          Profile
+        </h3>
+      </div>
+      <div class="card-body">
+        <form #prof="ngForm" (ngSubmit)="onEditProfile(prof)">
+          <div class="form-group">
+            <input  type="text" class="form-control" name="firstName" placeholder="First Name"
+                    #firstName="ngModel" [(ngModel)]="user.firstName">
+          </div>
+          <div class="form-group">
+            <input  type="text" class="form-control" name="lastName" placeholder="Last Name"
+                    #lastName="ngModel" [(ngModel)]="user.lastName">
+          </div>
+          <div class="form-group">
+            <input  type="text" class="form-control" name="username" placeholder="Username"
+                    required minlength="5"
+                    #username="ngModel" [(ngModel)]="user.username"
+                    [ngClass]="{ 'is-invalid': prof.submitted && username.invalid || customFormError.username.show }"
+                    (keydown)="onClearError($event)">
+            <div *ngIf="prof.submitted && username.invalid" class="invalid-feedback">
+              <div *ngIf="username.errors.required">Username is required</div>
+              <div *ngIf="username.errors.minlength">Username must be at least 5 characters</div>
+            </div>
+            <div *ngIf="customFormError.username" class="invalid-feedback">{{ customFormError.username.msg }}</div>
+          </div>
+          <div class="form-group">
+            <input  type="email" class="form-control" name="email" placeholder="Email"
+                    required email
+                    #email="ngModel" [(ngModel)]="user.email"
+                    [ngClass]="{ 'is-invalid': prof.submitted && email.invalid || customFormError.email.show }"
+                    (keydown)="onClearError($event)">
+            <div *ngIf="prof.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
+            <div *ngIf="customFormError.email" class="invalid-feedback">{{ customFormError.email.msg }}</div>
+          </div>
+          <button class="btn btn-success btn-block">
+            Save changes
+          </button>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-danger btn-block" (click)="ngxSmartModalService.getModal('customModal').open()">
+          Account disabled
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
