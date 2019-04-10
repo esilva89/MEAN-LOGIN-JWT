@@ -19,11 +19,11 @@ The application allows users to register, login using JWT and modify the profile
 1. Access the root folder of the project and execute the command: `npm start`.
 
 ## Screenshots
-![alt text](https://github.com/esilva89/MEAN-LOGIN-JWT-TEST/blob/master/docs/screenshot-pageHome.jpg "Page Home")
-![alt text](https://github.com/esilva89/MEAN-LOGIN-JWT-TEST/blob/master/docs/screenshot-pageRegister.jpg "Page Register")
-![alt text](https://github.com/esilva89/MEAN-LOGIN-JWT-TEST/blob/master/docs/screenshot-pageLogin.jpg "Page Login")
-![alt text](https://github.com/esilva89/MEAN-LOGIN-JWT-TEST/blob/master/docs/screenshot-pageEditProfile.jpg "Page Edit Profile")
-![alt text](https://github.com/esilva89/MEAN-LOGIN-JWT-TEST/blob/master/docs/screenshot-pageEditPassword.jpg "Page Edit Password")
+![alt text](https://github.com/esilva89/MEAN-LOGIN-JWT/blob/master/docs/screenshot-pageHome.jpg "Page Home")
+![alt text](https://github.com/esilva89/MEAN-LOGIN-JWT/blob/master/docs/screenshot-pageRegister.jpg "Page Register")
+![alt text](https://github.com/esilva89/MEAN-LOGIN-JWT/blob/master/docs/screenshot-pageLogin.jpg "Page Login")
+![alt text](https://github.com/esilva89/MEAN-LOGIN-JWT/blob/master/docs/screenshot-pageEditProfile.jpg "Page Edit Profile")
+![alt text](https://github.com/esilva89/MEAN-LOGIN-JWT/blob/master/docs/screenshot-pageEditPassword.jpg "Page Edit Password")
 
 ## External Packages
 **Client**
